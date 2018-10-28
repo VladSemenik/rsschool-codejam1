@@ -1,5 +1,4 @@
 function recursion (tree) {
-    // const final = [];
     const result = [];
     const queue = [tree];
     helpRecursion (tree);
@@ -15,13 +14,16 @@ function recursion (tree) {
             helpRecursion(node);
         }
     }
+
+    const final = [[result[0]]];
     
-    // for (let i = 2; i < result.length; i=Math.pow(i,2)) {
-    //     const m = [];
-    //     for (let j = i-2; j < Math.pow(i,2); j++) {
-    //         m.push(result[j]);
-    //     }
-    //     final.push(m);
-    // }
-    return result;
+    for ( let i = 2; i < result.length; i=Math.pow(i,2) ) {
+        const m = [];
+        for ( let j = i-1; j < Math.pow(i,2)-1; j++ ) {
+            if( !result[j] ) break;
+                m.push( result[j] );
+        }
+        final.push(m);
+    }
+    return final;
 }
